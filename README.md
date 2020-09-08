@@ -10,5 +10,5 @@ Site where you look for local breweries
 
 ## Screenshot:
 
-![Alt text](./assets/images/plenty-of-brew-img1 "Plenty of Brew")
-![Alt text](./assets/images/plenty-of-brew-img2 "Plenty of Brew")
+![Alt text](./assets/images/plenty-of-brew-img1.png "Plenty of Brew")
+![Alt text](./assets/images/plenty-of-brew-img2.png "Plenty of Brew")
