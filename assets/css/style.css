@@ -31,4 +31,7 @@ h1{
 .input-group{
     width: 40%;
 }
+.modal-title{
+    font-weight: bold;
+}
 

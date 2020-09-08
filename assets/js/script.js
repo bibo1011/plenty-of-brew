@@ -26,16 +26,35 @@ $(document).ready(function(){
             var i;
             for (i = 0; i < response.length; i++){
                 console.log(response[i]);
-                var name = JSON.stringify(response[i].name);
-                var list = $("ul").append("<li>" + name + "</li>");
+                var name = JSON.stringify(response[i].name).replace(/"/g, '');
+                var street = JSON.stringify(response[i].street).replace(/"/g, '');
+                var phone = JSON.stringify(response[i].phone).replace(/"/g, '');
+                var type = JSON.stringify(response[i].brewery_type).replace(/"/g, '');
+                var url = JSON.stringify(response[i].website_url).replace(/"/g, '');
+                var list = $("ul").append("<li style='list-style-type:none'><span style='font-weight:bold'>" + name);
+                $("ul").append("<p> Address: " + street + "<br> Phone: " + phone + "<br> Type: " + type + "<br> Link: " + "<a target='_blank' href=>" + url);
+
+                
                 
             }
         })
+
         
         
     
     });
-});   
+});  
+// //set the marquee parameters
+// function init() { 
+//     rtl_marquee.start();
+//     document.getElementById("sports-news");
+
+// }
+// var rtl_marquee_Text = 'JavaScript scrolling text';
+// var rtl_marquee_Direction = 'left';
+// var rtl_marquee_Contents='<span style="font-family:aria;font-size:20pt;white-space:nowrap;">' + rtl_marquee_Text + '</span>';
+// rtl_marquee = new xbMarquee('rtl_marquee', '40px', '95%', 6, 80, rtl_marquee_Direction, 'scroll', rtl_marquee_Contents);
+// window.setTimeout( init, 200); 
        
     
     
