@@ -59,7 +59,7 @@ $(document).ready(function(){
         })
         function clearResults(){
             $("ul").children().remove();
-
+            $("#street").children().remove();
         }
         clearResults()
 
