@@ -33,14 +33,28 @@ $(document).ready(function(){
                 var phone = JSON.stringify(response[i].phone).replace(/"/g, '');
                 var type = JSON.stringify(response[i].brewery_type).replace(/"/g, '');
                 var url = JSON.stringify(response[i].website_url).replace(/"/g, '');
+                var latitude = JSON.stringify(response[i].latitude).replace(/"/g, '');
+                var longitude = JSON.stringify(response[i].longitude).replace(/"/g, '');
                 $("h5").text("Breweries around " + city);
                 // var website = document.createElement("a")
                 // website.href = url
-                $("ul").append("<h4 style='list-style-type:none'><span style='font-weight:bold'>" + name);
-                $("ul").append("<p> Address: " + street + "<br> State: " + state + "<br> Phone: " + phone + "<br> Type: " + type);
+                $("ul").append("<h4 style='list-style-type:none'><span style='font-weight:bold'>" + "<p style='color:red'>" + name);
+                $("ul").append("<p> Address: " + "<a href=> " + street + "</a>" + "<br> State: " + state + "<br> Phone: " + phone + "<br> Type: " + type);
                 $("ul").append("<p> Link: <a target='_blank' href=>" + url);
                 // $("a").text(website.href)
-                console.log(url);
+                // console.log("latitude", latitude);
+                // console.log("longitude", longitude);
+                
+                fetch('https://maps.googleapis.com/maps/api/streetview?location=' + latitude + ',' + longitude + '&size=300x200&key=AIzaSyCuMB4iJK-fR7r2pWaVP-Up7DVSgLId8sA')
+                .then(function(response){
+                    console.log(response.url);
+                
+                    var img = document.createElement("img")
+                    img.src = response.url
+                    var src = document.getElementById("street")
+                    src.appendChild(img)
+                    
+                })            
             }
         })
         function clearResults(){
@@ -49,9 +63,6 @@ $(document).ready(function(){
         }
         clearResults()
 
-        
-        
-    
     });
 });  
 
