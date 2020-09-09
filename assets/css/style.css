@@ -35,6 +35,7 @@ h1{
     font-weight: bold;
 }
 #street img{
-    padding: 5px;
-    margin: 5px;
+    padding-top: 3px;
+    padding-bottom: 21px;
+    margin: 0;
 }
