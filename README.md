@@ -45,17 +45,18 @@ Daniel Lindsey      https://github.com/DLindsey3415
 
 ## Pre-requisite:
 
-Latest browser {Chrome, Safari, Firefox, Edge}
-Github account to checkout the code
+Latest browser {Chrome, Safari, Firefox, Edge}.
+
+Github account to checkout the code.
 
 ## Deployment Instructions:
 
-1. Make sure you meet the pre-requisites before continue
+1. Make sure you meet the pre-requisites before continue.
 2. To clone the repository use this link: 
   ```bash
   git@github.com:koneruteja/plenty-of-brew.git
   ```
-3. Open index.html in your browser
+3. Open index.html in your browser.
 
 ## Screenshot:
 
