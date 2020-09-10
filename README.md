@@ -1,10 +1,16 @@
 # plenty-of-brew
 
+### Beer Enthusiasts, finally there is an easy way to look for breweries around you!
+
 Application where you look for local breweries around a city. 
-Links to their website, their location and phone number for business.
+
+Shows result that includes link to their website, their location and contact number for brewery.
+
+You can also see the street view of the brewery for easy find.
+
 You're welcome, enjoy your drink!
 
-## Built with 
+## Built with:
 
 HTML 5.0
 
@@ -24,7 +30,7 @@ Dharma Teja Koneru  https://github.com/koneruteja
 
 Daniel Lindsey      https://github.com/DLindsey3415
 
-## Usage
+## Usage:
 
 1. Copy the url - 
   ```bash
@@ -37,12 +43,12 @@ Daniel Lindsey      https://github.com/DLindsey3415
 
 ## Website:  https://koneruteja.github.io/plenty-of-brew/ 
 
-## Pre-requisite
+## Pre-requisite:
 
 Latest browser {Chrome, Safari, Firefox, Edge}
 Github account to checkout the code
 
-## Deployment Instructions
+## Deployment Instructions:
 
 1. Make sure you meet the pre-requisites before continue
 2. To clone the repository use this link: 
