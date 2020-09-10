@@ -40,7 +40,7 @@ $(document).ready(function(){
                 // website.href = url
                 $("ul").append("<h4 style='list-style-type:none'><span style='font-weight:bold'>" + "<p style='color:red'>" + name);
                 $("ul").append("<p> Address: " + "<a target='_blank' href='https://google.com/maps'> " + street + "</a>" + "<br> State: " + state + "<br> Phone: " + phone + "<br> Type: " + type);
-                $("ul").append("<p> Link: <a target='_blank' href=>" + url);
+                $("ul").append("<p> Link: <a target='_blank' href=" + url + ">" + url);
                 // $("a").text(website.href)
                 // console.log("latitude", latitude);
                 // console.log("longitude", longitude);
