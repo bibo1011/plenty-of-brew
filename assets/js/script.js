@@ -8,58 +8,60 @@ $(document).ready(function(){
             document.getElementById("beerBtn").click();
         }
     });
+    function clearResults(){
+        $("ul").children().remove();
+        $("#street").children().remove();
+    }
+    // search on click
     $('#beerBtn').on('click', function() {
         // alert('User clicked on "foo."');
         var searchCity = document.querySelector("#city").value;
         if (searchCity === '') { 
-            alert("enter city");
-            cleaInputs();
+            $("h5").text("no results found");
             
-        }
+            
         
-        fetch('https://api.openbrewerydb.org/breweries?by_city=' + searchCity)
-        .then(function(response){
-            console.log(response);
-            return response.json();
-        })
-        .then(function(response){
-            var i;
-            for (i = 0; i < response.length; i++){
-                console.log(response[i]);
-                var city = JSON.stringify(response[i].city).replace(/"/g, '');
-                var state = JSON.stringify(response[i].state).replace(/"/g, '');
-                var name = JSON.stringify(response[i].name).replace(/"/g, '');
-                var street = JSON.stringify(response[i].street).replace(/"/g, '');
-                var phone = JSON.stringify(response[i].phone).replace(/"/g, '');
-                var type = JSON.stringify(response[i].brewery_type).replace(/"/g, '');
-                var url = JSON.stringify(response[i].website_url).replace(/"/g, '');
-                var latitude = JSON.stringify(response[i].latitude).replace(/"/g, '');
-                var longitude = JSON.stringify(response[i].longitude).replace(/"/g, '');
-                $("h5").text("Breweries around " + city);
-                // var website = document.createElement("a")
-                // website.href = url
-                $("ul").append("<h4 style='list-style-type:none'><span style='font-weight:bold'>" + "<p style='color:red'>" + name);
-                $("ul").append("<p> Address: " + "<a target='_blank' href='https://google.com/maps'> " + street + "</a>" + "<br> State: " + state + "<br> Phone: " + phone + "<br> Type: " + type);
-                $("ul").append("<p> Link: <a target='_blank' href=" + url + ">" + url);
-                // $("a").text(website.href)
-                // console.log("latitude", latitude);
-                // console.log("longitude", longitude);
-                
-                fetch('https://maps.googleapis.com/maps/api/streetview?location=' + latitude + ',' + longitude + '&size=300x180&key=AIzaSyCuMB4iJK-fR7r2pWaVP-Up7DVSgLId8sA')
-                .then(function(response){
-                    console.log(response.url);
-                
-                    var img = document.createElement("img")
-                    img.src = response.url
-                    var src = document.getElementById("street")
-                    src.appendChild(img)
+        } else {
+            
+            fetch('https://api.openbrewerydb.org/breweries?by_city=' + searchCity)
+            .then(function(response){
+                console.log(response);
+                return response.json();
+            })
+            .then(function(response){
+                var i;
+                for (i = 0; i < response.length; i++){
+                    console.log(response[i]);
+                    var city = JSON.stringify(response[i].city).replace(/"/g, '');
+                    var state = JSON.stringify(response[i].state).replace(/"/g, '');
+                    var name = JSON.stringify(response[i].name).replace(/"/g, '');
+                    var street = JSON.stringify(response[i].street).replace(/"/g, '');
+                    var phone = JSON.stringify(response[i].phone).replace(/"/g, '');
+                    var type = JSON.stringify(response[i].brewery_type).replace(/"/g, '');
+                    var url = JSON.stringify(response[i].website_url).replace(/"/g, '');
+                    var latitude = JSON.stringify(response[i].latitude).replace(/"/g, '');
+                    var longitude = JSON.stringify(response[i].longitude).replace(/"/g, '');
+                    $("h5").text("Breweries around " + city);
+                    $("ul").append("<h4 style='list-style-type:none'><span style='font-weight:bold'>" + "<p style='color:red'>" + name);
+                    $("ul").append("<p> Address: " + "<a target='_blank' href='https://google.com/maps'> " + street + "</a>" + "<br> State: " + state + "<br> Phone: " + phone + "<br> Type: " + type);
+                    $("ul").append("<p> Link: <a target='_blank' href=" + url + ">" + url);
+                    // $("a").text(website.href)
+                    // console.log("latitude", latitude);
+                    // console.log("longitude", longitude);
                     
-                })            
-            }
-        })
-        function clearResults(){
-            $("ul").children().remove();
-            $("#street").children().remove();
+                    fetch('https://maps.googleapis.com/maps/api/streetview?location=' + latitude + ',' + longitude + '&size=300x180&key=AIzaSyCuMB4iJK-fR7r2pWaVP-Up7DVSgLId8sA')
+                    .then(function(response){
+                        console.log(response.url);
+                    
+                        var img = document.createElement("img");
+                        img.src = response.url;
+                        var src = document.getElementById("street");
+                        // src.style()
+                        src.appendChild(img);
+                        
+                    })            
+                }
+            })
         }
         clearResults()
 
