@@ -22,7 +22,7 @@ $(document).ready(function(){
             
         
         } else {
-            
+            // open brewery api
             fetch('https://api.openbrewerydb.org/breweries?by_city=' + searchCity)
             .then(function(response){
                 console.log(response);
@@ -41,25 +41,46 @@ $(document).ready(function(){
                     var url = JSON.stringify(response[i].website_url).replace(/"/g, '');
                     var latitude = JSON.stringify(response[i].latitude).replace(/"/g, '');
                     var longitude = JSON.stringify(response[i].longitude).replace(/"/g, '');
+                    var google = "https://www.google.com/maps/place/"
+                    var add = street + city + state
+                    var address = add.replace( / /g, '+')
+                    console.log(address)
                     $("h5").text("Breweries around " + city);
-                    $("ul").append("<h4 style='list-style-type:none'><span style='font-weight:bold'>" + "<p style='color:red'>" + name);
-                    $("ul").append("<p> Address: " + "<a target='_blank' href='https://google.com/maps'> " + street + "</a>" + "<br> State: " + state + "<br> Phone: " + phone + "<br> Type: " + type);
-                    $("ul").append("<p> Link: <a target='_blank' href=" + url + ">" + url);
+                    $("ul#list-brew").append("<h4 style='list-style-type:none'><span style='font-weight:bold'>" + "<p style='color:red'>" + name);
+                    $("ul#list-brew").append("<p> Address: " + "<a target='_blank' href=" + google + address + "'>" + street + "</a>" + "<br> State: " + state + "<br> Phone: " + phone + "<br> Type: " + type);
+                    $("ul#list-brew").append("<p> Link: <a target='_blank' href=" + url + ">" + url);
                     // $("a").text(website.href)
                     // console.log("latitude", latitude);
                     // console.log("longitude", longitude);
                     
+                    // google street view api
                     fetch('https://maps.googleapis.com/maps/api/streetview?location=' + latitude + ',' + longitude + '&size=300x180&key=AIzaSyCuMB4iJK-fR7r2pWaVP-Up7DVSgLId8sA')
                     .then(function(response){
                         console.log(response.url);
                     
                         var img = document.createElement("img");
                         img.src = response.url;
-                        var src = document.getElementById("street");
-                        // src.style()
-                        src.appendChild(img);
+                        var src = document.getElementById("street-view");
+                        src.append(img);
+                    })    
+                    // google map api
+                    fetch('https://cors-anywhere.herokuapp.com/' + 'https://www.google.com/maps/search/?api=1&query=' + address)
+                    .then(function(response){
+                            
+                        // console.log(response.url); 
                         
-                    })            
+                        map = response.url;
+                        var mapUrl = map.replace('https://cors-anywhere.herokuapp.com/', '');
+                        $("ul#street-view").append("<p> <a target='_blank' href=" + mapUrl + ">" + "Click to get directions")
+                        // console.log(mapUrl);
+                        
+
+                    })
+                    
+                    
+                    
+                        
+                                
                 }
             })
         }

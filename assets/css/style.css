@@ -34,8 +34,9 @@ h1{
 .modal-title{
     font-weight: bold;
 }
-#street img{
+#street-view img{
     padding-top: 3px;
     padding-bottom: 21px;
     margin: 0;
 }
+
