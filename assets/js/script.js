@@ -15,10 +15,12 @@ $(document).ready(function(){
         $("#street").children().remove();
     }
 
+
+
     // search on click
     $('#beerBtn').on('click', function() {
-        // alert('User clicked on "foo."');
         var searchCity = document.querySelector("#city").value;
+        
         if (searchCity === '') { 
             $("h5").text("no results found");
         } else {
@@ -30,6 +32,7 @@ $(document).ready(function(){
                 return response.json();
             })
             .then(function(response){
+                localStorage.setItem("city", JSON.stringify(searchCity))
                 var i;
                 for (i = 0; i < response.length; i++){
                     console.log(response[i]);
@@ -80,5 +83,7 @@ $(document).ready(function(){
         clearResults()
 
     });
+    
+    
 });  
        
